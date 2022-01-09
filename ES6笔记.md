@@ -199,7 +199,93 @@ var re1 = /ab/i,
 * js函数的两个不同的内部方法：[[Call]] 和 [[Construct]]
    1. 执行[[Call]]方法： 通过new关键字调用函数时。（创建称为实例的新对象->执行函数体->this绑定到实例上）（被称为构造函数）
    2. 执行[[construct]]方法：不通过new关键字调用函数时。 （直接执行函数体）
-* 
+
+### 箭头函数
+* ES6 允许使用“箭头”（=>）定义函数。
+var f = v => v;
+// 等同于
+var f = function (v) {
+  return v;
+};
+
+* 如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用return语句返回
+var sum = (num1, num2) => { return num1 + num2; }
+
+* 箭头函数的一个用处是简化回调函数
+
+### 尾调用
+* 指某个函数的最后一步是调用另一个函数
+* 尾递归：对于尾递归来说，由于只存在一个调用帧，所以永远不会发生“栈溢出”错误。
+
+### 函数参数的尾逗号
+
+### Function.prototype.toString()
+* 修改后的toString()方法，明确要求返回一模一样的原始代码
+function /* foo comment */ foo () {}
+foo.toString()
+// "function /* foo comment */ foo () {}"
+
+### catch 命令的参数省略
+* try...catch结构，允许catch语句省略参数
+## 数值的拓展
+### 二进制和八进制表示法
+* ES6 提供了二进制和八进制数值的新的写法，分别用前缀0b（或0B）和0o（或0O）表示
+* 如果要将0b和0o前缀的字符串数值转为十进制，要使用Number方法
+
+### 数值分隔符
+* 数值分隔符没有指定间隔的位数可以每三位添加一个分隔符，也可以每一位、每两位、每四位添加一个
+
+### Number.isFinite(), Number.isNaN()
+* Number.isFinite()用来检查一个数值是否为有限的（finite），即不是Infinity
+* Number.isNaN()用来检查一个值是否为NaN
+
+### Number.isNaN()用来检查一个值是否为NaN
+* ES6 将全局方法parseInt()和parseFloat()，移植到Number对象上面，行为完全保持不变
+
+### Number.isInteger()
+* Number.isInteger()用来判断一个数值是否为整数
+
+### Number.EPSILON()
+* 它表示 1 与大于 1 的最小浮点数之间的差
+
+### 安全整数和 Number.isSafeInteger()
+
+### Math 对象的扩展
+1. Math.trunc()
+   * Math.trunc方法用于去除一个数的小数部分，返回整数部分。
+2. Math.sign()
+   * Math.sign方法用来判断一个数到底是正数、负数、还是零。对于非数值，会先将其转换为数值
+3. Math.cbrt()
+   * Math.cbrt()方法用于计算一个数的立方根。
+4. Math.clz32()
+   * Math.clz32()方法将参数转为 32 位无符号整数的形式，然后返回这个 32 位值里面有多少个前导 0
+5. Math.imul()
+   * Math.imul方法返回两个数以 32 位带符号整数形式相乘的结果，返回的也是一个 32 位的带符号整数
+6. Math.fround()
+   * Math.fround方法返回一个数的32位单精度浮点数形式
+7. Math.hypot()
+   * Math.hypot方法返回所有参数的平方和的平方根
+8. Math.expm1()
+   * Math.expm1(x)返回 ex - 1，即Math.exp(x) - 1
+9. Math.log1p()
+   * Math.log1p(x)方法返回1 + x的自然对数，即Math.log(1 + x)。如果x小于-1，返回NaN
+10. Math.log10()
+   * Math.log10(x)返回以 10 为底的x的对数。如果x小于 0，则返回 NaN
+11. Math.log2()
+   * Math.log2(x)返回以 2 为底的x的对数。如果x小于 0，则返回 NaN
+
+### BigInt 数据类型
+* 为了与 Number 类型区别，BigInt 类型的数据必须添加后缀n
+* BigInt 只用来表示整数，没有位数的限制，任何位数的整数都可以精确表示
+
+### BigInt 函数
+* 可以用它生成 BigInt 类型的数值。转换规则基本与Number()一致，将其他类型的值转为 BigInt
+* 可以使用Boolean()、Number()和String()这三个方法，将 BigInt 可以转为布尔值、数值和字符串类型
+* BigInt 对应的布尔值，与 Number 类型一致，即0n会转为false，其他值转为true
+
+## Symbol
+* 表示独一无二的值。它是 JavaScript 语言的第七种数据类型
+
 
 
 
